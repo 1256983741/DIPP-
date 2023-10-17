@@ -1,32 +1,26 @@
 mczhi.github.io/DIPP/
 命令：
 
- conda activate torch113
-
- cd DIPP
-
- python data_process.py --load_path /path/to/original/data --save_path /output/path/to/processed/data --use_multiprocessing
-
-
- nohup python train.py --name DIPP --train_set ../train_set --valid_set ../valid_set --use_planning --pretrain_epochs 5 --train_epochs 20 --batch_size 32 --learning_rate 2e-4 --device cuda:0 > train.log 2>&1 &
-
- python open_loop_test.py --name open_loop --test_set /path/to/original/test/data --model_path /path/to/saved/model --use_planning --render --save --device cpu
-
- python closed_loop_test.py --name closed_loop --test_file /path/to/original/test/data --model_path /path/to/saved/model --use_planning --render --save --device cpu
+	conda activate torch113
+	cd DIPP
+	python data_process.py --load_path /path/to/original/data --save_path /output/path/to/processed/data --use_multiprocessing
+	nohup python train.py --name DIPP --train_set ../train_set --valid_set ../valid_set --use_planning --pretrain_epochs 5 --train_epochs 20 --batch_size 32 --learning_rate 2e-4 --device cuda:0 > train.log 2>&1 &
+	python open_loop_test.py --name open_loop --test_set /path/to/original/test/data --model_path /path/to/saved/model --use_planning --render --save --device cpu
+	python closed_loop_test.py --name closed_loop --test_file /path/to/original/test/data --model_path /path/to/saved/model --use_planning --render --save --device cpu
 
 1. install cuda
 
 官网下载所需版本的 cuda[https://developer.nvidia.com/cuda-toolkit-archive](url)
 版本根据实验需求选择
 
- wget https://developer.download.nvidia.com/compute/cuda/11.3.1/local_installers/cuda_11.3.1_465.19.01_linux.run 
+	wget https://developer.download.nvidia.com/compute/cuda/11.3.1/local_installers/cuda_11.3.1_465.19.01_linux.run 
 
- sudo sh cuda_11.3.1_465.19.01_linux.run
+	sudo sh cuda_11.3.1_465.19.01_linux.run
 
 终端出现窗口：
 Do you accept the above EULA? (accept / decline / quit):
 
- accept
+	accept
 
 回车键进行勾选，X就是选中，没有X就是没有选中，把（driver）安装驱动进行取消。之后向下键，回车确认
 
@@ -34,21 +28,21 @@ Do you accept the above EULA? (accept / decline / quit):
 
 2. 配置cuda环境
 
- sudo  vim ~/.bashrc 
+	sudo  vim ~/.bashrc 
 
 在bashrc文件最下方，添加下入代码
 （ps：这边需要注意cuda的版本，版本不同，路径的命名需修改）
 
- export PATH=$PATH:/usr/local/cuda-11.8/bin
+	export PATH=$PATH:/usr/local/cuda-11.8/bin
 
- export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.8/lib64
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.8/lib64
 
 更新环境
- source ~/.bashrc
+	source ~/.bashrc
 
 3.测试
 
-  nvcc -V
+	nvcc -V
 
 输出下述结果，表示安装成功:
 	nvcc: NVIDIA (R) Cuda compiler driver
@@ -65,36 +59,36 @@ Do you accept the above EULA? (accept / decline / quit):
 
 将压缩包，放入自定义路径后，输入命令进行解压
 
- tar -xvf cudnn-linux-x86_64-8.2.0.53_cuda11-archive.tar.xz 
+	tar -xvf cudnn-linux-x86_64-8.2.0.53_cuda11-archive.tar.xz 
 
 解压后，输入命令，讲cuDNN对应文件拷贝至CUDA指定路径
 
-  cd cudnn-linux-x86_64-8.2.0.53_cuda11-archive/
+	cd cudnn-linux-x86_64-8.2.0.53_cuda11-archive/
 
-  ls
-  #include  lib  LICENSE
+	ls
+	#include  lib  LICENSE
 
- sudo cp include/cudnn*.h /usr/local/cuda-11.3/include
+	sudo cp include/cudnn*.h /usr/local/cuda-11.3/include
 
- sudo cp lib/libcudnn* /usr/local/cuda-11.3/lib64
+	sudo cp lib/libcudnn* /usr/local/cuda-11.3/lib64
 
- sudo chmod a+r /usr/local/cuda-11.3/include/cudnn*.h /usr/local/cuda-11.3/lib64/libcudnn*
+	sudo chmod a+r /usr/local/cuda-11.3/include/cudnn*.h /usr/local/cuda-11.3/lib64/libcudnn*
 
 5.cuda版本切换
 
 修改bashrc
 
- sudo vim ~/.bashrc
+	sudo vim ~/.bashrc
 
 将原先的cuda-11.3注释掉，添加cuda-11.x新的环境设置，即可
 
- cuda-11.3
- export PATH=$PATH:/usr/local/cuda-11.3/bin
- export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.3/lib64
+	cuda-11.3
+	export PATH=$PATH:/usr/local/cuda-11.3/bin
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.3/lib64
 
- cuda-11.x
- export PATH=$PATH:/usr/local/cuda-11.1/bin
- export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.x/lib64
+	cuda-11.x
+	export PATH=$PATH:/usr/local/cuda-11.1/bin
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.x/lib64
 
 6.DIPP实验：
 
