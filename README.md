@@ -63,6 +63,7 @@ Do you accept the above EULA? (accept / decline / quit):
 	Build cuda_11.3.r11.3/compiler.31833905_0
 
 5.安装cudnn
+
 下载cuda对应版本的cudnn包 https://developer.nvidia.com/rdp/cudnn-archive
 
 将压缩包，放入自定义路径后，输入命令进行解压
@@ -84,11 +85,9 @@ Do you accept the above EULA? (accept / decline / quit):
 
 6.cuda版本切换
 
-修改bashrc
+	sudo vim ~/.bashrc #修改bashrc
 
-	sudo vim ~/.bashrc
-
-将原先的cuda-11.3注释掉，添加cuda-11.x新的环境设置，即可
+	#将原先的cuda-11.3注释掉，添加cuda-11.x新的环境设置，即可
 
 	cuda-11.3
 	export PATH=$PATH:/usr/local/cuda-11.3/bin
