@@ -102,23 +102,25 @@ Do you accept the above EULA? (accept / decline / quit):
 Theseus 安装问题（python 3.8，pytorch 1.12.1）ImportError：无法从 'torch.utils._pytree' 导入名称 'tree_map_only'
 解决:更换pytorch版本（以下为测试版本）
 
-torch113（已测试）
+torch113（已测试）:
+	
 	conda create -n torch113 python=3.8 -y && conda activate torch113
 	conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.7 -c pytorch -c nvidia -y
 	pip install theseus-ai==0.2.1
 
-	？？？：UnpicklingError: Failed to interpret file '../train_set/8c480e8d57a313b9_110.npz' as a pickle（数据文件出问题？）
+	#？？？：UnpicklingError: Failed to interpret file '../train_set/8c480e8d57a313b9_110.npz' as a pickle（数据文件出问题？）
 	
 	AN：移除该数据
 	
-	？？？：Attempted to update variable control_variables with a (cuda:0,torch.float32) tensor, which is inconsistent with objective's expected (cuda,torch.float32).
+	#？？？：Attempted to update variable control_variables with a (cuda:0,torch.float32) tensor, which is inconsistent with objective's expected (cuda,torch.float32).
 	AN：训练数据的device选cuda:0（python train.py --name DIPP --train_set /path/to/train/data --valid_set /path/to/valid/data --use_planning --pretrain_epochs 5 --train_epochs 20 --batch_size 32 --learning_rate 2e-4 --device cuda：0）
 	
-	？？？：AttributeError: 'Objective' object has no attribute 'error_squared_norm'
+	#？？？：AttributeError: 'Objective' object has no attribute 'error_squared_norm'
 	AN：修改train.py中“error_squared_norm()”函数为“error_metric()”函数 （新版theseus/core/objective.py删除了error_squared_norm()函数）
 
 
-torch200（未测试）
+torch200（未测试）:
+	
 	conda create -n torch200 python=3.8 -y && conda activate torch200
 	conda install pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.7 -c pytorch -c nvidia -y
 	pip install theseus-ai==0.2.1
@@ -126,6 +128,7 @@ torch200（未测试）
 
 
 begin training（指定epoch轮数）：
-  add begin with 5 #第5轮报错，所以从第5轮重新训练
+	
+	add begin with 5 #第5轮报错，所以从第5轮重新训练
     > start_epoch = 5
 	for epoch in range(start_epoch,train_epochs):
