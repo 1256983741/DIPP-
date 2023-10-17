@@ -18,7 +18,7 @@
 
 	gsutil -m cp -r \ " "\(下载文件夹地址)
 
-2. install cuda
+2.install cuda
 
 官网下载所需版本的 cuda[https://developer.nvidia.com/cuda-toolkit-archive](url)
 版本根据实验需求选择
@@ -36,7 +36,7 @@ Do you accept the above EULA? (accept / decline / quit):
 
 最后点击 install
 
-3. 配置cuda环境
+3.配置cuda环境
 
 	sudo  vim ~/.bashrc 
 
