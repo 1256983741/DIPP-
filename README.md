@@ -55,6 +55,7 @@ Do you accept the above EULA? (accept / decline / quit):
 	nvcc -V
 
 输出下述结果，表示安装成功:
+	
 	nvcc: NVIDIA (R) Cuda compiler driver
 	Copyright (c) 2005-2022 NVIDIA Corporation
 	Built on Wed_Sep_21_10:33:58_PDT_2022
@@ -109,7 +110,6 @@ torch113（已测试）:
 	pip install theseus-ai==0.2.1
 
 	#？？？：UnpicklingError: Failed to interpret file '../train_set/8c480e8d57a313b9_110.npz' as a pickle（数据文件出问题？）
-	
 	AN：移除该数据
 	
 	#？？？：Attempted to update variable control_variables with a (cuda:0,torch.float32) tensor, which is inconsistent with objective's expected (cuda,torch.float32).
@@ -130,5 +130,5 @@ torch200（未测试）:
 begin training（指定epoch轮数）：
 	
 	add begin with 5 #第5轮报错，所以从第5轮重新训练
-    > start_epoch = 5
+    start_epoch = 5
 	for epoch in range(start_epoch,train_epochs):
