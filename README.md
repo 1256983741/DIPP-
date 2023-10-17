@@ -2,10 +2,15 @@ mczhi.github.io/DIPP/
 命令：
 
 	conda activate torch113
+
 	cd DIPP
+
 	python data_process.py --load_path /path/to/original/data --save_path /output/path/to/processed/data --use_multiprocessing
+
 	nohup python train.py --name DIPP --train_set ../train_set --valid_set ../valid_set --use_planning --pretrain_epochs 5 --train_epochs 20 --batch_size 32 --learning_rate 2e-4 --device cuda:0 > train.log 2>&1 &
+
 	python open_loop_test.py --name open_loop --test_set /path/to/original/test/data --model_path /path/to/saved/model --use_planning --render --save --device cpu
+
 	python closed_loop_test.py --name closed_loop --test_file /path/to/original/test/data --model_path /path/to/saved/model --use_planning --render --save --device cpu
 
 1. install cuda
@@ -54,9 +59,6 @@ Do you accept the above EULA? (accept / decline / quit):
 4.安装cudnn
 下载cuda对应版本的cudnn包 https://developer.nvidia.com/rdp/cudnn-archive
 
-
-![Image](https://github.com/users/1256983741/projects/1/assets/67784705/8bf888aa-8bef-4826-86a0-f88b35d2e5f2)
-
 将压缩包，放入自定义路径后，输入命令进行解压
 
 	tar -xvf cudnn-linux-x86_64-8.2.0.53_cuda11-archive.tar.xz 
@@ -64,8 +66,8 @@ Do you accept the above EULA? (accept / decline / quit):
 解压后，输入命令，讲cuDNN对应文件拷贝至CUDA指定路径
 
 	cd cudnn-linux-x86_64-8.2.0.53_cuda11-archive/
-
 	ls
+
 	#include  lib  LICENSE
 
 	sudo cp include/cudnn*.h /usr/local/cuda-11.3/include
@@ -73,7 +75,7 @@ Do you accept the above EULA? (accept / decline / quit):
 	sudo cp lib/libcudnn* /usr/local/cuda-11.3/lib64
 
 	sudo chmod a+r /usr/local/cuda-11.3/include/cudnn*.h /usr/local/cuda-11.3/lib64/libcudnn*
-
+	
 5.cuda版本切换
 
 修改bashrc
